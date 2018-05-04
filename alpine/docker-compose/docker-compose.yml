@@ -1,7 +1,7 @@
 version: '3'
 services:
   lychee:
-    image: <IMAGENAME>
+    image: kolex/lychee:3.1.6
     container_name: lychee
     restart: unless-stopped
     ports:
