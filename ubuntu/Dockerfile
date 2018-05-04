@@ -6,10 +6,12 @@ LABEL description="This image contains a working Lychee installation which \
 uses the ubuntu base image with nginx and php installed."
 
 ENV TZ=Europe/Berlin
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ENV LYCHEE_VERSION v3.1.6
+ENV LYCHEE_DOWNLOAD_SHA512 a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
 
 RUN \
-  apt-get update \
+  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+  && apt-get update \
   && apt-get install -y --no-install-recommends \
               ca-certificates \
               nginx \
@@ -40,9 +42,9 @@ RUN \
 COPY default /etc/nginx/sites-available/default
 
 RUN \
-  lychee_version=$(curl -sX GET "https://api.github.com/repos/electerious/Lychee/releases/latest" \
-  | awk '/tag_name/{print $4;exit}' FS='[""]') \
-  && curl -o /tmp/lychee.tar.gz -L "https://github.com/electerious/Lychee/archive/${lychee_version}.tar.gz" \
+  cd /tmp/ \
+  && curl -fSL -o lychee.tar.gz "https://github.com/electerious/Lychee/archive/$LYCHEE_VERSION.tar.gz" \
+  && echo "$LYCHEE_DOWNLOAD_SHA512  lychee.tar.gz" | sha512sum -c \
   && tar -xf /tmp/lychee.tar.gz -C /var/www/html --strip-components=1 \
   && rm -rf /tmp/* \
   && chown -R www-data:www-data /var/www/html/*
