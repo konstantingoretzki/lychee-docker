@@ -47,7 +47,7 @@ After opening the webinterface for the first time you will be asked for the data
 
 - Database host: db
 - Database username: lychee
-- Database password: <YOURSAFEPASSWORD2>
+- Database password: YOURSAFEPASSWORD2
 - database name: lychee
 
 Setup your admin credentials afterwards and you're good to go! **Important**: It is heavily reccommended to remove both of the MYSQL password lines from your docker-compose.yml after a successful installation, as those will be persistantly stored in the image volumes and thus aren't required for starting/stopping the container.
