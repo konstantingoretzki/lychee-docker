@@ -5,9 +5,9 @@ LABEL version="v1.0"
 LABEL description="This image contains a working Lychee installation which \
 uses the ubuntu base image with nginx and php installed."
 
-ENV TZ=Europe/Berlin
-ENV LYCHEE_VERSION v3.1.6
-ENV LYCHEE_DOWNLOAD_SHA512 a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
+ARG TZ=Europe/Berlin
+ARG LYCHEE_VERSION=v3.1.6
+ARG LYCHEE_DOWNLOAD_SHA512=a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
 
 RUN \
   ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
