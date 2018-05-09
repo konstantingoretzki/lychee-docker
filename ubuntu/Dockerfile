@@ -9,6 +9,7 @@ ARG TZ=Europe/Berlin
 ARG LYCHEE_VERSION=v3.1.6
 ARG LYCHEE_DOWNLOAD_SHA512=a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
 
+# change timezone, install required packages, change php.ini settings and remove default html files
 RUN \
   ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
   && apt-get update \
@@ -28,15 +29,11 @@ RUN \
   && rm -rf /var/lib/apt/lists/* \
   && echo "\ndaemon off;" >> /etc/nginx/nginx.conf \
   && sed -i -e "s/;\?daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.2/fpm/php-fpm.conf \
-
-  # change php.ini settings for Lychee
   && sed -i -e "s/max_execution_time = 30/max_execution_time = 200/g" /etc/php/7.2/fpm/php.ini \
   && sed -i -e "s/post_max_size = 8M/post_max_size = 100M/g" /etc/php/7.2/fpm/php.ini \
   && echo "upload_max_size = 100M" >> /etc/php/7.2/fpm/php.ini \
   && sed -i -e "s/upload_max_filesize = 2M/upload_max_filesize = 20M/g" /etc/php/7.2/fpm/php.ini \
   && sed -i -e "s/memory_limit = 128M/memory_limit = 256M/g" /etc/php/7.2/fpm/php.ini \
-
-  # remove default html files
   && rm /var/www/html/*
 
 COPY default /etc/nginx/sites-available/default
