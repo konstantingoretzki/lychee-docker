@@ -8,9 +8,9 @@ we've added php7 and the lychee files. We've tried to do everything as small, se
 as possible, but if you find some spots which need to be improved, feel free to tell us."
 
 # set timezone, version and hash of Lychee download
-ENV TZ=Europe/Berlin
-ENV LYCHEE_VERSION v3.1.6
-ENV LYCHEE_DOWNLOAD_SHA512 a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
+ARG TZ=Europe/Berlin
+ARG LYCHEE_VERSION=v3.1.6
+ARG LYCHEE_DOWNLOAD_SHA512=a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
 
 # set timezone and install php7 and required php-modules
 RUN \
