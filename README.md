@@ -5,7 +5,7 @@
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/kolex/lychee.svg?style=flat-square)](https://hub.docker.com/r/kolex/lychee)
 
 
-![Lychee](https://i.imgur.com/0WO9dEL.jpg)
+![Lychee](https://i.imgur.com/bupJVBj.png)
 
 ## What is Lychee?
 
