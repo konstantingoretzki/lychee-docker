@@ -9,13 +9,13 @@
 
 ## What is Lychee?
 
-Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload,manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
+Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
 
 Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/kolex/lychee) as well!
 
 ## Features
 
-- Based on Alpine Linux 3.7 (recommended) or Ubuntu 18.04.
+- Based on nginx-alpine (recommended) or Ubuntu 18.04.
 - Uses the latest release from [electerious/Lychee](https://github.com/electerious/Lychee)
 - For additional security, the checksum of the downloaded binary will be verified during the build process.
 - Does not run as root (uses the provided "nginx" user)
@@ -23,7 +23,7 @@ Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/ko
 
 ## Description
 
-This image contains a working Lychee installation which uses the nginx:1.13.12-alpine image. The base images provides alpine with nginx installed, we've added php7 and the lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
+This image contains a working Lychee installation which uses the nginx:1.15.1-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
 
 ## Usage
 
@@ -48,7 +48,7 @@ After opening the webinterface for the first time you will be asked for the data
 - **Database host**: db
 - **Database username**: lychee
 - **Database password**: YOURSAFEPASSWORD2
-- **database name**: lychee
+- **Database name**: lychee
 
 Setup your admin credentials afterwards and you're good to go!
 
