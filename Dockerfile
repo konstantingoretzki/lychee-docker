@@ -53,8 +53,8 @@ RUN \
   && chown -R nginx:nginx /usr/share/nginx/html/*
 
 # copy nginx and supervisor config-files
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY supervisord.conf /etc/supervisord.conf
+COPY src/nginx.conf /etc/nginx/nginx.conf
+COPY src/supervisord.conf /etc/supervisord.conf
 
 # expose port
 EXPOSE 80
