@@ -15,7 +15,7 @@ Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/ko
 
 ## Features
 
-- Based on nginx-alpine (recommended) or Ubuntu 18.04.
+- Based on nginx-alpine
 - Uses the latest release from [electerious/Lychee](https://github.com/electerious/Lychee)
 - For additional security, the checksum of the downloaded binary will be verified during the build process.
 - Does not run as root (uses the provided "nginx" user)
