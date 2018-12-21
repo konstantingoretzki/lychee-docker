@@ -1,16 +1,16 @@
-FROM nginx:1.15.5-alpine
+FROM nginx:1.15.7-alpine
 
 LABEL authors="Konstantin Goretzki, Felix Alexa"
-LABEL version="v1.3"
+LABEL version="v1.4"
 LABEL description="This image contains a working Lychee installation which \
-uses the nginx:1.15.5-alpine image. The base images provides alpine with nginx installed, \
+uses the nginx:1.15.7-alpine image. The base images provides alpine with nginx installed, \
 we've added php7 and the lychee files. We've tried to do everything as small, secure and clean \
 as possible, but if you find some spots which need to be improved, feel free to tell us."
 
 # set timezone, version and hash of Lychee download
 ARG TZ=Europe/Berlin
-ARG LYCHEE_VERSION=v3.1.6
-ARG LYCHEE_DOWNLOAD_SHA512=a489257c681c2973ae3683ca0059dddd8c53726c556333804e83c7f4dadfbabe9df363c95d59e12a785e3c1bed78e91930c8490097c963f9b14a1b608b041871
+ARG LYCHEE_VERSION=v3.2.7
+ARG LYCHEE_DOWNLOAD_SHA512=e9de7b16d62b790bff02e5d1c30ac06cd429cecaf5055e871ffb266c67757bf964c3050ebd9072bf0c2ccd3d00998bc8512826b507380c437e5cd239328e3cb3
 
 # set timezone and install php7 and required php-modules
 RUN \
@@ -42,11 +42,11 @@ RUN \
   && sed -i "s|user\s*=\s*nobody|user = nginx|g" /etc/php7/php-fpm.d/www.conf \
   && sed -i "s|group\s*=\s*nobody|group = nginx|g" /etc/php7/php-fpm.d/www.conf
 
-# remove default nginx files, download + verify v.3.1.6 Lychee release and copy them to the webroot
+# remove default nginx files, download + verify v.3.2.7 Lychee release and copy them to the webroot
 RUN \
   rm -r /usr/share/nginx/html/* \
   && cd /tmp/ \
-  && curl -fSL -o lychee.tar.gz "https://github.com/electerious/Lychee/archive/$LYCHEE_VERSION.tar.gz" \
+  && curl -fSL -o lychee.tar.gz "https://github.com/LycheeOrg/Lychee/archive/$LYCHEE_VERSION.tar.gz" \
   && echo "$LYCHEE_DOWNLOAD_SHA512  lychee.tar.gz" | sha512sum -c \
   && tar -xf /tmp/lychee.tar.gz -C /usr/share/nginx/html/ --strip-components=1 \
   && rm -rf /tmp/* \
