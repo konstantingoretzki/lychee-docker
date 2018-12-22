@@ -39,7 +39,7 @@ docker run -d -it \
   kolex/lychee:3.2.7
 ```
 
-The docker-compose example below (also available as a file  [right here](https://github.com/konstantingoretzki/lychee-docker/blob/master/alpine/docker-compose/docker-compose.yml)) makes it easy to get Lychee running, as it includes a MariaDB database. It also creates the config/images volumes for your persistant data.
+The docker-compose example below (also available as a file  [right here](https://github.com/konstantingoretzki/lychee-docker/blob/master/docker-compose.yml)) makes it easy to get Lychee running, as it includes a MariaDB database. It also creates the config/images volumes for your persistant data.
 
 Please replace the password variables with your own secure passwords and save it as "docker-compose.yml". You can run the stack by executing ```docker-compose up -d``` in the same directory as the file.
 
