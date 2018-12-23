@@ -45,6 +45,8 @@ Please replace the password variables with your own secure passwords and save it
 
 After opening the webinterface for the first time you will be asked for the database credentials. If you are using our docker-compose example, it could look like this:
 
+[Lychee configuration](https://imgur.com/a/wYFG295)
+
 - **Database host**: db
 - **Database username**: lychee
 - **Database password**: YOURSAFEPASSWORD2
@@ -67,8 +69,8 @@ services:
     networks:
       - lychee
     volumes:
-      - config:/var/www/html/data
-      - images:/var/www/html/uploads
+      - config:/usr/share/nginx/html/data
+      - images:/usr/share/nginx/html/uploads
 
   db:
     image: mariadb
