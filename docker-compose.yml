@@ -9,8 +9,8 @@ services:
     networks:
       - lychee
     volumes:
-      - config:/var/www/html/data
-      - images:/var/www/html/uploads
+      - config:/usr/share/nginx/html/data
+      - images:/usr/share/nginx/html/uploads
 
   db:
     image: mariadb
