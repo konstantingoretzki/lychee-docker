@@ -34,8 +34,8 @@ docker run -d -it \
   --name lychee \
   --restart unless-stopped \
   -p 80:80 \
-  -v /path/to/host/config:/var/www/html/data \
-  -v /path/to/host/images:/var/www/html/uploads \
+  -v /path/to/host/config:/usr/share/nginx/html/data \
+  -v /path/to/host/images:/usr/share/nginx/html/uploads \
   kolex/lychee:3.2.7
 ```
 
