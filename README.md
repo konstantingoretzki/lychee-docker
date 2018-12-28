@@ -23,7 +23,7 @@ Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/ko
 
 ## Description
 
-This image contains a working Lychee installation which uses the nginx:1.15.7-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
+This image contains a working Lychee installation which uses the nginx:1.15.8-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
 
 ## Usage
 
@@ -36,7 +36,7 @@ docker run -d -it \
   -p 80:80 \
   -v /path/to/host/config:/usr/share/nginx/html/data \
   -v /path/to/host/images:/usr/share/nginx/html/uploads \
-  kolex/lychee:3.2.7
+  kolex/lychee:3.2.8
 ```
 
 The docker-compose example below (also available as a file  [right here](https://github.com/konstantingoretzki/lychee-docker/blob/master/docker-compose.yml)) makes it easy to get Lychee running, as it includes a MariaDB database. It also creates the config/images volumes for your persistant data.
@@ -61,7 +61,7 @@ Setup your admin credentials afterwards and you're good to go!
 version: '3'
 services:
   lychee:
-    image: kolex/lychee:3.2.7
+    image: kolex/lychee:3.2.8
     container_name: lychee
     restart: unless-stopped
     ports:
