@@ -1,7 +1,7 @@
 version: '3'
 services:
   lychee:
-    image: kolex/lychee:3.2.7
+    image: kolex/lychee:3.2.8
     container_name: lychee
     restart: unless-stopped
     ports:
@@ -9,8 +9,8 @@ services:
     networks:
       - lychee
     volumes:
-      - config:/var/www/html/data
-      - images:/var/www/html/uploads
+      - config:/usr/share/nginx/html/data
+      - images:/usr/share/nginx/html/uploads
 
   db:
     image: mariadb
