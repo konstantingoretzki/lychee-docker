@@ -1,7 +1,7 @@
 FROM nginx:1.15.8-alpine
 
 LABEL authors="Konstantin Goretzki, Felix Alexa"
-LABEL version="v1.5"
+LABEL version="v1.6"
 LABEL description="This image contains a working Lychee installation which \
 uses the nginx:1.15.8-alpine image. The base images provides alpine with nginx installed, \
 we've added php7 and the lychee files. We've tried to do everything as small, secure and clean \
@@ -9,8 +9,8 @@ as possible, but if you find some spots which need to be improved, feel free to 
 
 # set timezone, version and hash of Lychee download
 ARG TZ=Europe/Berlin
-ARG LYCHEE_VERSION=v3.2.8-fixed
-ARG LYCHEE_DOWNLOAD_SHA512=870aba82117ea5eaee0c10026ba12d9a265c4e216f55dc80d806a9b128cd7a9cb4237bd238bb16ac3fecc96b3216452fb8b9dd0cf73d6653c071cfa196dd169c
+ARG LYCHEE_VERSION=v3.2.10-release
+ARG LYCHEE_DOWNLOAD_SHA512=6fa1d1a10f3791b119f0a0425b0928381acd68a4aa9084e10106a2028fd42973cbd42f2c702ca7c42ce1e7d87894b1952756dcf49bf3ce1913605764cec2f995
 
 # set timezone and install php7 and required php-modules
 RUN \
