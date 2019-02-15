@@ -36,7 +36,7 @@ docker run -d -it \
   -p 80:80 \
   -v /path/to/host/config:/usr/share/nginx/html/data \
   -v /path/to/host/images:/usr/share/nginx/html/uploads \
-  kolex/lychee:3.2.10
+  kolex/lychee:3.2.12
 ```
 
 The docker-compose example below (also available as a file  [right here](https://github.com/konstantingoretzki/lychee-docker/blob/master/docker-compose.yml)) makes it easy to get Lychee running, as it includes a MariaDB database. It also creates the config/images volumes for your persistant data.
@@ -61,7 +61,7 @@ Setup your admin credentials afterwards and you're good to go!
 version: '3'
 services:
   lychee:
-    image: kolex/lychee:3.2.10
+    image: kolex/lychee:3.2.12
     container_name: lychee
     restart: unless-stopped
     ports:
