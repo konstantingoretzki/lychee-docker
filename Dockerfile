@@ -10,6 +10,7 @@ as possible, but if you find some spots which need to be improved, feel free to 
 # set timezone, version and hash of Lychee download
 ARG TZ=Europe/Berlin
 ARG LYCHEE_VERSION=v3.2.13
+ARG LYCHEE_DOWNLOAD_SHA512=2598f7e4fa95761fd15845fa3f65792302445f8e110fc0f665998f2cdc81bb3583066d07b36a0b66f9da50c52f79e3c59dcdc800b3586eabfef9c057fd5a5704
 
 # set timezone and install php7 and required php-modules
 RUN \
@@ -28,28 +29,32 @@ RUN \
           supervisor \
           imagemagick \
           ffmpeg \
-          git \
+          curl \
           composer
 
 # change php.ini and php-fpm settings for Lychee
 RUN \
-  sed -i -e "s/max_execution_time = 30/max_execution_time = 200/g" /etc/php7/php.ini \
-  && sed -i -e "s/post_max_size = 8M/post_max_size = 100M/g" /etc/php7/php.ini \
+  sed -i -e "s|max_execution_time = 30|max_execution_time = 200|g" /etc/php7/php.ini \
+  && sed -i -e "s|post_max_size = 8M|post_max_size = 100M|g" /etc/php7/php.ini \
   && echo "upload_max_size = 100M" >> /etc/php7/php.ini \
-  && sed -i -e "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php7/php.ini \
-  && sed -i -e "s/memory_limit = 128M/memory_limit = 256M/g" /etc/php7/php.ini \
+  && sed -i -e "s|upload_max_filesize = 2M|upload_max_filesize = 150M|g" /etc/php7/php.ini \
+  && sed -i -e "s|memory_limit = 128M|memory_limit = 256M|g" /etc/php7/php.ini \
   && sed -i "s|;listen.owner\s*=\s*nobody|listen.owner = nginx|g" /etc/php7/php-fpm.d/www.conf \
   && sed -i "s|;listen.group\s*=\s*nobody|listen.group = nginx|g" /etc/php7/php-fpm.d/www.conf \
   && sed -i "s|user\s*=\s*nobody|user = nginx|g" /etc/php7/php-fpm.d/www.conf \
   && sed -i "s|group\s*=\s*nobody|group = nginx|g" /etc/php7/php-fpm.d/www.conf
 
-# remove default nginx files, download Lychee release to the webroot
+# remove default nginx files, download + verify Lychee files and copy them to the webroot
 RUN \
   rm -r /usr/share/nginx/html/* \
-  && cd /usr/share/nginx/html/ \
-  && git clone --recurse-submodules https://github.com/LycheeOrg/Lychee.git . \
-  && rm -r .git/ .github/ .gitmodules/ .gitignore .htaccess docs/ .all-contributorsrc \
-  && apk del git
+  && cd /tmp/ \
+  && curl -fSL -o lychee.zip "https://github.com/LycheeOrg/Lychee/releases/download/$LYCHEE_VERSION/Lychee-$LYCHEE_VERSION.zip" \
+  && echo "$LYCHEE_DOWNLOAD_SHA512  lychee.zip" | sha512sum -c \
+  && unzip lychee.zip \
+  && cd Lychee-$LYCHEE_VERSION \
+  && mv * .[^.]* /usr/share/nginx/html \ 
+  && rm -rf /tmp/* 
+
 
 # install dependencies for generating video thumbnails using composer
 RUN \
@@ -58,7 +63,7 @@ RUN \
   && chown -R nginx:nginx /usr/share/nginx/html/* \
   && chmod -R 750 uploads/ data/
 
-# fix weird path bug - #175 
+# fix weird path bug - GitHub #175 
 RUN \
   sed -i 's#$ffmpeg = FFMpeg\\FFMpeg::create();#$ffmpeg = FFMpeg\\FFMpeg::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' /usr/share/nginx/html/php/Modules/Photo.php \ 
   && sed -i 's#$ffprobe = FFMpeg\\FFProbe::create();#$ffprobe = FFMpeg\\FFProbe::create(array('"'"'ffmpeg.binaries'"'"'  => '"'"'/usr/bin/ffmpeg'"'"','"'"'ffprobe.binaries'"'"' => '"'"'/usr/bin/ffprobe'"'"',));#g' /usr/share/nginx/html/php/Modules/Photo.php
