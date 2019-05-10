@@ -23,7 +23,7 @@ Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/ko
 
 ## Security
 
-For information regarding the security please check out [SECURITY.md](https://github.com/konstantingoretzki/lychee-docker/SECURITY.md).
+For information regarding the security please check out [SECURITY.md](https://github.com/konstantingoretzki/lychee-docker/blob/master/SECURITY.md).
 
 ## Description
 
