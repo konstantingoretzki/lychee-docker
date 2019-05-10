@@ -1,9 +1,9 @@
-FROM nginx:1.15.10-alpine
+FROM nginx:1.15.12-alpine
 
 LABEL authors="Konstantin Goretzki, Felix Alexa"
-LABEL version="v2.1"
+LABEL version="v2.2"
 LABEL description="This image contains a working Lychee installation which \
-uses the nginx:1.15.10-alpine image. The base images provides alpine with nginx installed, \
+uses the nginx:1.15.12-alpine image. The base images provides alpine with nginx installed, \
 we've added php7 and the lychee files. We've tried to do everything as small, secure and clean \
 as possible, but if you find some spots which need to be improved, feel free to tell us."
 
