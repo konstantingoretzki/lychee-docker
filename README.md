@@ -21,9 +21,13 @@ Feel free to check out our image on the [Docker Hub](https://hub.docker.com/r/ko
 - Does not run as root (uses the provided "nginx" user)
 - No usage of ```chmod 777``` as used by many other images
 
+## Security
+
+For information regarding the security please check out [SECURITY.md](https://github.com/konstantingoretzki/lychee-docker/SECURITY.md).
+
 ## Description
 
-This image contains a working Lychee installation which uses the nginx:1.15.10-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
+This image contains a working Lychee installation which uses the nginx:1.15.12-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
 
 ## Usage
 
