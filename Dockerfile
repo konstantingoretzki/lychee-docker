@@ -1,16 +1,16 @@
-FROM nginx:1.15.12-alpine
+FROM nginx:1.17.0-alpine
 
 LABEL authors="Konstantin Goretzki, Felix Alexa"
-LABEL version="v2.2"
+LABEL version="v2.3"
 LABEL description="This image contains a working Lychee installation which \
-uses the nginx:1.15.12-alpine image. The base images provides alpine with nginx installed, \
+uses the nginx:1.17.0-alpine image. The base images provides alpine with nginx installed, \
 we've added php7 and the lychee files. We've tried to do everything as small, secure and clean \
 as possible, but if you find some spots which need to be improved, feel free to tell us."
 
 # set timezone, version and hash of Lychee download
 ARG TZ=Europe/Berlin
-ARG LYCHEE_VERSION=v3.2.14
-ARG LYCHEE_DOWNLOAD_SHA512=6c7900d7c72330b2be217d9a16df393ac665b52410f18ade42159c04d1f8efe1e7589be9390227970e520839780e7bdfda5056e7c5513a44bb1f98418c976c9f
+ARG LYCHEE_VERSION=v3.2.16
+ARG LYCHEE_DOWNLOAD_SHA512=b24af37a6b320bdc5de97099a8622cd08ced730514a9e9227db17f5393214dc5145a11b1f05189722233f58075ebcb24b948a20e3ce2a7848b2925705b35e411
 
 # set timezone and install php7 and required php-modules
 RUN \
