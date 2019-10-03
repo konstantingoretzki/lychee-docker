@@ -11,7 +11,7 @@ jobs:
   check:
     name: Hadolint
     runs-on: ubuntu-latest
-    container: hadolint/hadolint:latest
+    container: hadolint/hadolint:latest-debian
     steps:
       - uses: actions/checkout@v1
       - name: Run hadolint
