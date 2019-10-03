@@ -1,9 +1,9 @@
 # Lychee + Docker
 
+![](https://github.com/konstantingoretzki/lychee-docker/workflows/Docker%20Image%20CI/badge.svg)
 [![Docker Stars](https://img.shields.io/docker/stars/kolex/lychee.svg?style=flat-square)](https://hub.docker.com/r/kolex/lychee/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kolex/lychee.svg?style=flat-square)](https://hub.docker.com/r/kolex/lychee/)
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/kolex/lychee.svg?style=flat-square)](https://hub.docker.com/r/kolex/lychee)
-![](https://github.com/konstantingoretzki/lychee-docker/workflows/Docker%20Image%20CI/badge.svg)
 
 ![Lychee](https://i.imgur.com/bupJVBj.png)
 
