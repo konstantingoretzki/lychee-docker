@@ -27,7 +27,7 @@ For information regarding the security please check out [SECURITY.md](https://gi
 
 ## Description
 
-This image contains a working Lychee installation which uses the nginx:1.17.0-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
+This image contains a working Lychee installation which uses the nginx:1.17.4-alpine image. The base images provides alpine with nginx installed, we've added php7 and the Lychee files. We've tried to do everything as small, secure and clean as possible, but if you find some spots which need to be improved, feel free to tell us.
 
 ## Usage
 
