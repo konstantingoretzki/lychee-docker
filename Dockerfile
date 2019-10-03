@@ -12,6 +12,10 @@ ARG TZ=Europe/Berlin
 ARG LYCHEE_VERSION=v3.2.16
 ARG LYCHEE_DOWNLOAD_SHA512=b24af37a6b320bdc5de97099a8622cd08ced730514a9e9227db17f5393214dc5145a11b1f05189722233f58075ebcb24b948a20e3ce2a7848b2925705b35e411
 
+
+# prevent pipefail
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+
 # set timezone and install php7 and required php-modules
 RUN \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
@@ -46,14 +50,14 @@ RUN \
 
 # remove default nginx files, download + verify Lychee files and copy them to the webroot
 RUN \
-  rm -r /usr/share/nginx/html/* \
+  rm -r -- /usr/share/nginx/html/* \
   && cd /tmp/ \
   && curl -fSL -o lychee.zip "https://github.com/LycheeOrg/Lychee/releases/download/$LYCHEE_VERSION/Lychee-$LYCHEE_VERSION.zip" \
   && echo "$LYCHEE_DOWNLOAD_SHA512  lychee.zip" | sha512sum -c \
   && unzip lychee.zip \
   && cd Lychee-$LYCHEE_VERSION \
-  && mv * .[^.]* /usr/share/nginx/html \ 
-  && rm -rf /tmp/* 
+  && mv -- * .[!.]* /usr/share/nginx/html \ 
+  && rm -rf -- /tmp/* 
 
 
 # install dependencies for generating video thumbnails using composer
@@ -81,4 +85,4 @@ STOPSIGNAL SIGTERM
 VOLUME /usr/share/nginx/html/uploads /usr/share/nginx/html/data
 
 # start supervisord which manages the nginx and php-fpm processes
-CMD /usr/bin/supervisord -n -c /etc/supervisord.conf
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
