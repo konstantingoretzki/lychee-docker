@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run hadolint
-        run: hadolint --ignore DL3018 --ignore SC2016 Dockerfile
+        run: hadolint --ignore DL3003 --ignore DL3018 --ignore SC2016 Dockerfile
 
   build:
     name: Build
