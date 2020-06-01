@@ -1,3 +1,12 @@
+# Discontinued
+
+Lychee has changed a lot since we've created this docker image.
+With the new v4 release there's an [official docker image](https://github.com/LycheeOrg/Lychee-Docker) and therefore we won't
+modify this image and refer to the offcial one.
+Thank you very much!
+
+**Use this**: [https://github.com/LycheeOrg/Lychee-Docker](https://github.com/LycheeOrg/Lychee-Docker)
+
 # Lychee + Docker
 
 ![](https://github.com/konstantingoretzki/lychee-docker/workflows/Docker%20Image%20CI/badge.svg)
