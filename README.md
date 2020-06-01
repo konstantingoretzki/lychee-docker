@@ -96,5 +96,5 @@ networks:
 volumes:
   config:
   images:
-db:
+  db:
 ```
